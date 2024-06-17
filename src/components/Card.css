@@ -1,0 +1,27 @@
+.item_section {
+  color: black;
+  display: flex;
+  padding: 1rem;
+  align-items: "center";
+  gap: 3rem;
+  flex: 1;
+  overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .item_section {
+    flex-direction: column;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 1496px) {
+  .item_section {
+    flex-direction: column;
+    overflow: hidden;
+    justify-content: center;
+  }
+  .graphtile {
+    justify-content: center;
+  }
+}
