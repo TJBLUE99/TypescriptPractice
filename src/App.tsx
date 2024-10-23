@@ -1,34 +1,37 @@
-import React, { ChangeEventHandler, useState } from "react";
+import React, { useState } from "react";
 
 import Button from "./components/atomicComponents/Button/Button";
 import AtomicInput from "./components/atomicComponents/TextField/TextField";
 import { Box, Typography } from "@mui/material";
-
-const test = () => {
-  console.log("Test function");
-};
+import Modal from "./components/atomicComponents/Modal/Modal";
 
 const App: React.FC = () => {
+  const [showModal, setShowModal] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
+  const handleModalOpen = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
   const handleChangeInputField = (
     e: React.ChangeEvent<HTMLInputElement>
   ): void => {
-    console.log("On change event: ", e.target.value);
     setInputValue(e.target.value);
   };
 
   const handleGetPassword = (
     event: React.ChangeEvent<HTMLInputElement>
   ): void => {
-    console.log("I am gettig password from text field: ", password);
     setPassword(event.target.value);
   };
 
   const handleGetEmail = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    console.log("I am gettig password from text field: ", email);
     setEmail(event.target.value);
   };
 
@@ -67,9 +70,21 @@ const App: React.FC = () => {
         <Button
           disabled={false}
           title="create new User"
-          handleClick={test}
+          handleClick={handleModalOpen}
         ></Button>
       </Box>
+      {showModal && (
+        <Modal
+          isOpen={showModal}
+          title={"Create New user"}
+          message={"Are you sure you want to add this user to the current list"}
+          onClose={handleCloseModal}
+          handleChange={function (): Promise<boolean> {
+            throw new Error("Function not implemented.");
+          }}
+          modalType={""}
+        ></Modal>
+      )}
     </>
   );
 };
