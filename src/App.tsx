@@ -7,9 +7,9 @@ import Modal from "./components/atomicComponents/Modal/Modal";
 
 const App: React.FC = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [inputValue, setInputValue] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
+  const [inputValue, setInputValue] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
 
   const handleModalOpen = () => {
     setShowModal(true);
