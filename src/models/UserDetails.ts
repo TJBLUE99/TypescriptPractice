@@ -1,5 +1,5 @@
 export type UserDetailsModal = {
-  userId: number;
+  userID: number;
   userName: string;
   userEmail: string;
   userPassword: string;

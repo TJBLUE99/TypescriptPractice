@@ -1,16 +1,17 @@
 import axios from "axios";
 import { APIResponse } from "../models/Response";
 import { UserDetailsModal } from "../models/UserDetails";
+import axiosInstance from "../components/configuration/axios.config";
 
-const FETCH_DETAILS_USERS = "http://localhost:8080/getAllUsers";
+const client = axiosInstance;
+
+const FETCH_DETAILS_USERS = "/user/getAllUsers";
 const DELETE_DETAILS_USERS = "http://localhost:8080/getAllUsers";
 const CREATE_NEW_USER = "http://localhost:8080/getAllUsers";
 const UPDATE_USER_DETAILS = "http://localhost:8080/getAllUsers";
 
-export const fetchAllUsers = async (): Promise<
-  APIResponse<UserDetailsModal>
-> => {
-  const response = await axios.get(FETCH_DETAILS_USERS);
+export const fetchAllUsers = async (): Promise<any> => {
+  const response = await client.get(FETCH_DETAILS_USERS);
   if (response.status === 200 && response.data !== null) {
     return response.data;
   }
